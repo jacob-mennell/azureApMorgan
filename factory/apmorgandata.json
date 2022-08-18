@@ -1,0 +1,9 @@
+{
+	"name": "apmorgandata",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "99f6c3ee-1d77-4522-aba1-e9de6d5dc0f8",
+		"tenantId": "f181b179-ec18-4e50-8c2d-f31fa47b8e5a"
+	}
+}
