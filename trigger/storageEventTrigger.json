@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "databricks_type_check",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileName": "triggerBody().fileName"
 				}
 			}
 		],
