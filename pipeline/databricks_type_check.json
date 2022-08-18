@@ -15,7 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/patrick.mennell1_outlook.com#ext#@patrickmennell1outlook.onmicrosoft.com/Project2"
+					"notebookPath": "/Users/patrick.mennell1_outlook.com#ext#@patrickmennell1outlook.onmicrosoft.com/Project2",
+					"baseParameters": {
+						"fileName": "@pipeline().parameters.fileName"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricksAPM",
