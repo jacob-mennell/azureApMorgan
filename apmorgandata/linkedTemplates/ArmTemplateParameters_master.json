@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "apmorgandata"
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://jmapmorganstorage.dfs.core.windows.net/"
+		},
+		"AzureKVAPMorg_properties_typeProperties_baseUrl": {
+			"value": "https://apmorganvkv.vault.azure.net/"
+		},
+		"storageEventTrigger_properties_databricks_type_check_parameters_fileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"storageEventTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/347cd6fe-eda2-47b8-be7e-7fde3c13370e/resourceGroups/project2/providers/Microsoft.Storage/storageAccounts/jmapmorganstorage"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
