@@ -111,7 +111,10 @@
 						"typeProperties": {
 							"notebookPath": "/Users/patrick.mennell1_outlook.com#ext#@patrickmennell1outlook.onmicrosoft.com/Project2",
 							"baseParameters": {
-								"fileName": "@pipeline().parameters.fileName"
+								"fileName": {
+									"value": "@pipeline().parameters.fileName",
+									"type": "Expression"
+								}
 							}
 						},
 						"linkedServiceName": {
@@ -126,7 +129,8 @@
 				},
 				"parameters": {
 					"fileName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "@pipeline().parameters.fileName"
 					}
 				},
 				"annotations": []
