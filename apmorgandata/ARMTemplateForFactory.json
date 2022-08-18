@@ -11,9 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage'"
 		},
+		"AzureDatabricksAPM_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksAPM'"
+		},
 		"AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://jmapmorganstorage.dfs.core.windows.net/"
+		},
+		"AzureDatabricksAPM_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0818-074452-4k7miqt2"
 		},
 		"AzureKVAPMorg_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -107,23 +115,13 @@
 				"typeProperties": {
 					"domain": "https://adb-3227760053498205.5.azuredatabricks.net",
 					"accessToken": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "AzureKVAPMorg",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "databrickstoken"
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricksAPM_accessToken')]"
 					},
-					"newClusterNodeType": "Standard_DS3_v2",
-					"newClusterNumOfWorker": "1",
-					"newClusterVersion": "10.4.x-scala2.12",
-					"newClusterInitScripts": [],
-					"clusterOption": "Fixed"
+					"existingClusterId": "[parameters('AzureDatabricksAPM_properties_typeProperties_existingClusterId')]"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureKVAPMorg')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureKVAPMorg')]",
@@ -144,7 +142,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {

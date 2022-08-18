@@ -8,8 +8,14 @@
 		"AzureDataLakeStorage_accountKey": {
 			"value": ""
 		},
+		"AzureDatabricksAPM_accessToken": {
+			"value": ""
+		},
 		"AzureDataLakeStorage_properties_typeProperties_url": {
 			"value": "https://jmapmorganstorage.dfs.core.windows.net/"
+		},
+		"AzureDatabricksAPM_properties_typeProperties_existingClusterId": {
+			"value": "0818-074452-4k7miqt2"
 		},
 		"AzureKVAPMorg_properties_typeProperties_baseUrl": {
 			"value": "https://apmorganvkv.vault.azure.net/"

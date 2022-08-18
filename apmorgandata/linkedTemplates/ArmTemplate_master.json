@@ -11,9 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage'"
 		},
+		"AzureDatabricksAPM_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksAPM'"
+		},
 		"AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://jmapmorganstorage.dfs.core.windows.net/"
+		},
+		"AzureDatabricksAPM_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0818-074452-4k7miqt2"
 		},
 		"AzureKVAPMorg_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -57,8 +65,14 @@
 					"AzureDataLakeStorage_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage_accountKey')]"
 					},
+					"AzureDatabricksAPM_accessToken": {
+						"value": "[parameters('AzureDatabricksAPM_accessToken')]"
+					},
 					"AzureDataLakeStorage_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]"
+					},
+					"AzureDatabricksAPM_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricksAPM_properties_typeProperties_existingClusterId')]"
 					},
 					"AzureKVAPMorg_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKVAPMorg_properties_typeProperties_baseUrl')]"
