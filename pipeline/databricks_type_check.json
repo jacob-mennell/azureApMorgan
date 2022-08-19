@@ -32,7 +32,7 @@
 		"parameters": {
 			"fileName": {
 				"type": "string",
-				"defaultValue": "@triggerBody().fileName"
+				"defaultValue": "Product.csv"
 			}
 		},
 		"annotations": []
