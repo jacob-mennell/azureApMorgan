@@ -23,12 +23,10 @@ A trigger has been created in ADF to execute the pipeline when a new .csv file i
 #####  Trigger Parameters
 A trigger has been created in ADF to execute the pipeline when a new .csv file is added to the storage container. 
 
-FileName = @triggerBody().fileName
+Trigger Run Parameters: FileName = @triggerBody().fileName
 
-Azure Databricks Parameters (read file from the trigger)
-FileName @pipeline().parameters.fileName
+Azure Databricks Parameters (read file from the trigger): FileName @pipeline().parameters.fileName
 
-get the file name from the adf (first cell of .ipynb notebook)
-fileName = dbutils.widgets.get('fileName')
+get the file name from ADF (first cell of .ipynb notebook): fileName = dbutils.widgets.get('fileName')
 
 The above ensures the Databricks cluster reads the FileName from the storage container dynamically through the ADF pipeline. 
