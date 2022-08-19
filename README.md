@@ -1,6 +1,6 @@
-# Azure AP Morgan Data Platform Project
+## Azure AP Morgan Data Platform Project
 
-### Process
+#### Process
 1) Internal application sends CSV files into Azure Data Lake Storage
 2) The file needs to be valdiated to check for duplicate rows - if duplicate rows exist the file needs to be rejected (sent to reject folder). File also needs to be validated to check the date format is correct. This is based on a format stored in Azure SQL -if this format is not correct the file needs to be rejected (sent to reject folder).
 3) If the file passes all checks it can be passed to the staging folder.
@@ -8,7 +8,7 @@
 
 <img width="394" alt="Project_Archiecture" src="https://user-images.githubusercontent.com/67950889/185568589-fe3e1532-6b66-4ca5-aeaf-7f1cea5c520c.png">
 
-### Project Learning Points: 
+#### Project Learning Points: 
 
 The aim to is to architect design and build an nterprise level data platform solution.
 
@@ -20,13 +20,15 @@ Azure Key Vault has been used to store secret credentials and the storage SAS to
 
 A trigger has been created in ADF to execute the pipeline when a new .csv file is added to the storage container. 
 
-Trigger Parameters
+#####  Trigger Parameters
+A trigger has been created in ADF to execute the pipeline when a new .csv file is added to the storage container. 
+
 FileName = @triggerBody().fileName
 
 Azure Databricks Parameters (read file from the trigger)
 FileName @pipeline().parameters.fileName
 
-# get the file name from the adf (first cell of .ipynb notebook)
+get the file name from the adf (first cell of .ipynb notebook)
 fileName = dbutils.widgets.get('fileName')
 
 The above ensures the Databricks cluster reads the FileName from the storage container dynamically through the ADF pipeline. 
