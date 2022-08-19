@@ -107,7 +107,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/patrick.mennell1_outlook.com#ext#@patrickmennell1outlook.onmicrosoft.com/Project2",
+							"notebookPath": "/Users/patrick.mennell1_outlook.com#ext#@patrickmennell1outlook.onmicrosoft.com/incoming_data_check",
 							"baseParameters": {
 								"fileName": {
 									"value": "@pipeline().parameters.fileName",
