@@ -27,11 +27,15 @@
 			"type": "string",
 			"defaultValue": "https://apmorganvkv.vault.azure.net/"
 		},
-		"storageEventTrigger_properties_databricks_type_check_parameters_fileName": {
+		"storageEventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/347cd6fe-eda2-47b8-be7e-7fde3c13370e/resourceGroups/project2/providers/Microsoft.Storage/storageAccounts/jmapmorganstorage"
+		},
+		"storageEventTrigger2_properties_databricks_type_check_parameters_fileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
-		"storageEventTrigger_properties_typeProperties_scope": {
+		"storageEventTrigger2_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/347cd6fe-eda2-47b8-be7e-7fde3c13370e/resourceGroups/project2/providers/Microsoft.Storage/storageAccounts/jmapmorganstorage"
 		}
@@ -89,6 +93,27 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/storageEventTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/input/blobs/landing/",
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('storageEventTrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/databricks_type_check')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -137,12 +162,12 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/storageEventTrigger')]",
+			"name": "[concat(parameters('factoryName'), '/storageEventTrigger2')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -150,7 +175,7 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"fileName": "[parameters('storageEventTrigger_properties_databricks_type_check_parameters_fileName')]"
+							"fileName": "[parameters('storageEventTrigger2_properties_databricks_type_check_parameters_fileName')]"
 						}
 					}
 				],
@@ -159,7 +184,7 @@
 					"blobPathBeginsWith": "/input/blobs/landing/",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('storageEventTrigger_properties_typeProperties_scope')]",
+					"scope": "[parameters('storageEventTrigger2_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]

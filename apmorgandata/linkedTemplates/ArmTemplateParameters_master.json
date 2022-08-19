@@ -20,10 +20,13 @@
 		"AzureKVAPMorg_properties_typeProperties_baseUrl": {
 			"value": "https://apmorganvkv.vault.azure.net/"
 		},
-		"storageEventTrigger_properties_databricks_type_check_parameters_fileName": {
+		"storageEventTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/347cd6fe-eda2-47b8-be7e-7fde3c13370e/resourceGroups/project2/providers/Microsoft.Storage/storageAccounts/jmapmorganstorage"
+		},
+		"storageEventTrigger2_properties_databricks_type_check_parameters_fileName": {
 			"value": "@triggerBody().fileName"
 		},
-		"storageEventTrigger_properties_typeProperties_scope": {
+		"storageEventTrigger2_properties_typeProperties_scope": {
 			"value": "/subscriptions/347cd6fe-eda2-47b8-be7e-7fde3c13370e/resourceGroups/project2/providers/Microsoft.Storage/storageAccounts/jmapmorganstorage"
 		},
 		"containerUri": {
