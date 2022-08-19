@@ -6,6 +6,7 @@
 3) If the file passes all checks it can be passed to the staging folder.
 4) The passed files will be writen as the Delta Table in Azure Databricks.
 
+<img width="394" alt="Project_Archiecture" src="https://user-images.githubusercontent.com/67950889/185568589-fe3e1532-6b66-4ca5-aeaf-7f1cea5c520c.png">
 
 ## Project Learning Points: 
 - architect, Design and build a real-world enterprise level data platform solution including multiple services.
