@@ -1,4 +1,4 @@
-# azure_ap_morgan
+# Azure AP Morgan Data Platform Project
 
 ## Process
 1) Internal application sends CSV files into Azure Data Lake Storage
