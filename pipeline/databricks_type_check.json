@@ -31,8 +31,7 @@
 		],
 		"parameters": {
 			"fileName": {
-				"type": "string",
-				"defaultValue": "Product.csv"
+				"type": "string"
 			}
 		},
 		"annotations": []
