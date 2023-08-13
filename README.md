@@ -1,32 +1,50 @@
 ## Azure AP Morgan Data Platform Project
 
-#### Process
-1) An internal application sends CSV files into Azure Data Lake Storage
-2) The file needs to be valdiated to check for duplicate rows - if duplicate rows exist the file needs to be rejected (sent to a rejection folder). File also needs to be validated to check the date format is correct. This is based on a format that needs to be uplaoded to an Azure SQL database - if this format is not correct it needs to be rejected (sent to reject folder).
-3) If the file passes all checks it can be passed to the staging folder.
-4) The passed files will be writen as the Delta Table in Azure Databricks.
+### Overview
 
-<img width="394" alt="Project_Archiecture" src="https://user-images.githubusercontent.com/67950889/185568589-fe3e1532-6b66-4ca5-aeaf-7f1cea5c520c.png">
+This project focuses on building an end-to-end data platform solution using Azure services, aimed at processing CSV files received from an internal application and ensuring their quality and accuracy before being integrated into the data ecosystem.
 
-#### Tools
+### Process
 
-The aim to is to architect design and build an nterprise level data platform solution.
+1. CSV files are sent by an internal application to Azure Data Lake Storage.
+2. Validation checks are performed on the files:
+   - Duplicate rows are identified, and if found, files are moved to a rejection folder.
+   - Date formats are verified according to the required format for Azure SQL database. Incorrect formats lead to rejection.
+3. Successfully validated files are moved to a staging folder.
+4. These files are then transformed into a Delta Table using Azure Databricks.
 
-A pipeline has been created in Azure Data Factory (ADF) using Databricks, Azure Data lake storage Gen 2 (ADLS), Azure SQL Server. 
+![Project Architecture](https://user-images.githubusercontent.com/67950889/185568589-fe3e1532-6b66-4ca5-aeaf-7f1cea5c520c.png)
 
-The databricks notebook uses PySpark and takes a .csv file from Azure Data Lake Storage Gen2 and validates the Column Name and Column Data Format against entries within an Azure SQL database. After validation, files are sent toA zure Data Lake Storage Gen2 storage, passed files to the landing folder and failed files to the reejcted folder. A Databricks mount has been created to link the Azure Data Lake cloud storage to the Databricks workspace. 
+### Tools and Technologies
 
-Azure Key Vault has been used to store secret credentials and the storage SAS token. The Key Vault stored credential details that enable connection between the Azure SQL database and Databricksc cluster.
+This project leverages several Azure services and tools:
+- Azure Data Factory (ADF)
+- Databricks
+- Azure Data Lake Storage Gen2 (ADLS)
+- Azure SQL Server
+- Azure Key Vault
 
-A trigger has been created in ADF to execute the pipeline when a new .csv file is added to the storage container. 
+### Databricks Notebook
 
-#####  Trigger Parameters
-A trigger has been created in ADF to execute the pipeline when a new .csv file is added to the storage container. 
+The Databricks notebook utilizes PySpark to:
+- Validate column names and data formats against an Azure SQL database.
+- Move validated files to Azure Data Lake Storage Gen2 (passing files to the landing folder and failed files to the rejected folder).
+- Create a Databricks mount for linking Azure Data Lake cloud storage to the Databricks workspace.
 
-Trigger Run Parameters: FileName = @triggerBody().fileName
+### Security and Credentials
 
-Azure Databricks Parameters (read file from the trigger): FileName @pipeline().parameters.fileName
+Azure Key Vault is employed to securely store sensitive credentials and storage SAS token. This ensures a safe and controlled connection between the Azure SQL database and the Databricks cluster.
 
-get the file name from ADF (first cell of .ipynb notebook): fileName = dbutils.widgets.get('fileName')
+### Automation
 
-The above ensures the Databricks cluster reads the FileName from the storage container dynamically through the ADF pipeline. 
+An Azure Data Factory trigger is set up to initiate the pipeline whenever a new .csv file is added to the storage container.
+
+#### Trigger Parameters
+
+- ADF Trigger: Activates the pipeline upon addition of a new .csv file to the storage container.
+- Trigger Run Parameters: `FileName = @triggerBody().fileName`
+- Azure Databricks Parameters: `FileName @pipeline().parameters.fileName`
+
+By adopting the above approach, the Databricks cluster dynamically reads the FileName from the storage container through the ADF pipeline, ensuring smooth execution.
+
+This project strives to provide a robust and scalable solution for handling data ingestion, validation, and integration within an enterprise-level data platform.
