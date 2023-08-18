@@ -6,7 +6,7 @@ The Azure AP Morgan Data Platform Project is a comprehensive data processing sol
 
 Process
 - Data Ingestion: CSV files are transmitted by an internal application and are stored within Azure Data Lake Storage.
-- Valadation and Sorting: The project employs a Databricks Python notebook to perform filename-based filtering and validation of date formats within the selected files. The validation process ensures data integrity and accuracy.
+- Validation and Sorting: The project employs a Databricks Python notebook to perform filename-based filtering and validation of date formats within the selected files. The validation process ensures data integrity and accuracy.
 - Folder Management: Depending on the validation outcome, the files are systematically sorted into distinct folders:
 - Files that pass validation are moved to the staging folder for further processing.
 - Files that fail validation are redirected to the rejection folder for manual review and resolution.
